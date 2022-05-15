@@ -51,10 +51,15 @@ install: st
 	@echo Please see the README file regarding the terminfo entry of st.
 	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
 	cp -f st.desktop $(DESTDIR)$(PREFIX)/share/applications
+	mkdir -p /usr/local/share/fonts/
+	cp ./font-comicmono/* /usr/local/share/fonts/
+	fc-cache -fv
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
 	rm -f $(DESTDIR)$(PREFIX)/share/applications/st.desktop
+	rm -f /usr/local/share/fonts/ComicMono-Bold.ttf
+	rm -f /usr/local/share/fonts/ComicMono.ttf
 
 .PHONY: all options clean dist install uninstall
